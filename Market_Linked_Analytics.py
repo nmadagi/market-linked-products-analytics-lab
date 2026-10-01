@@ -159,7 +159,7 @@ def var_es(pnl_array, alpha=0.95):
 # Streamlit UI
 # =========================================================
 
-st.title("📈 Market-Linked Product Analytics & Hedging Lab")
+st.title("Market-Linked Product Analytics & Hedging Lab")
 st.caption(
     "Prototype analytics stack for variable / fixed indexed annuity-style guarantees: "
     "derivatives valuation, stochastic modeling, scenario analysis, and hedge effectiveness."
@@ -253,7 +253,7 @@ else:
 # =========================================================
 # Section 1: Simulated Market Paths
 # =========================================================
-st.subheader("1️⃣ Market Scenarios")
+st.subheader("1. Market Scenarios")
 
 with st.expander("View simulated market paths", expanded=True):
     sample_paths = base_paths.iloc[:, : min(20, n_paths)]
@@ -285,7 +285,7 @@ with st.expander("View simulated market paths", expanded=True):
 # =========================================================
 # Section 2: Derivatives Valuation (Base)
 # =========================================================
-st.subheader("2️⃣ Derivatives Valuation & Greeks (Base Scenario)")
+st.subheader("2. Derivatives Valuation & Greeks (Base Scenario)")
 
 S0_used = float(base_paths.iloc[0, 0])
 T_used = T_years
@@ -327,7 +327,7 @@ st.markdown(
 # =========================================================
 # Section 3: Delta-Hedging Backtest (Base)
 # =========================================================
-st.subheader("3️⃣ Delta-Hedging Backtest & Hedge Effectiveness")
+st.subheader("3. Delta-Hedging Backtest & Hedge Effectiveness")
 
 S_array = base_paths.values  # (time, paths)
 pnl_hedged = delta_hedge_pnl(S_array, K, r_used, sigma_used, T_used)
@@ -368,7 +368,7 @@ with st.expander("View PnL distributions"):
     )
     fig_pnl.update_layout(
         barmode="overlay",
-        title="Distribution of P&L (per unit) – Unhedged vs Delta-Hedged",
+        title="Distribution of P&L (per unit) - Unhedged vs Delta-Hedged",
         xaxis_title="P&L at horizon",
         yaxis_title="Frequency",
         height=400,
@@ -383,7 +383,7 @@ with st.expander("View PnL distributions"):
 # =========================================================
 # Section 4: Scenario & Stress Testing
 # =========================================================
-st.subheader("4️⃣ Scenario & Stress Testing")
+st.subheader("4. Scenario & Stress Testing")
 
 st.markdown(
     "We run a small scenario suite on the same guarantee:\n"
@@ -438,7 +438,7 @@ st.markdown(
 # =========================================================
 # Section 5: Management Summary
 # =========================================================
-st.subheader("5️⃣ Management-Style Summary")
+st.subheader("5. Management-Style Summary")
 
 base_row = df_scen[df_scen["Scenario"] == "Base"].iloc[0]
 equity_row = df_scen[df_scen["Scenario"] == "Equity -20%"].iloc[0]
